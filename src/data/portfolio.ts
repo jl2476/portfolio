@@ -1,15 +1,18 @@
+import { PixelIconName } from "@/components/PixelIcons";
+
 export interface Project {
   title: string;
   description: string;
   techStack: string[];
   githubUrl?: string;
   liveUrl?: string;
-  emoji: string;
+  icon?: PixelIconName;
 }
 
 export interface Skill {
   name: string;
   category: string;
+  icon?: PixelIconName;
 }
 
 export interface Experience {
@@ -18,6 +21,7 @@ export interface Experience {
   period: string;
   description: string;
   bullets: string[];
+  icon?: PixelIconName;
 }
 
 export const personalInfo = {
@@ -29,12 +33,12 @@ export const personalInfo = {
   phone: "(347) 863-6351",
   resumeUrl: "/data/resume.pdf",
   bio: [
-    "hey there! i'm a CS student at RIT who loves building things — from AI training pipelines to full-stack web apps 🚀",
-    "i've worked on real-time inference engines in C++ with DirectX, built Salesforce solutions for Fortune 500 clients, and shipped AI apps with NextJS and OpenAI",
-    "when i'm not coding, you can find me exploring quantum computing, tinkering with neural networks, or enjoying a good cup of tea ☕✨",
+    "Hi there! I'm John, a computer science student at Rochester Institute of Technology with a passion for building software.",
+    "I enjoy working on challenging problems and continuously learning new technologies. My goal is to create innovative solutions that make a difference.",
+    "Outside of classes, I enjoy reading novels, collecting Pokemon Cards, and being performative.",
   ],
   whoami:
-    "a curious CS student at RIT who loves pixel art, starry nights, and building cool things — from AI pipelines to full-stack web apps. currently crafting software and sipping way too much matcha ☕✨",
+    "A CS student at RIT who loves building and collecting cool things. My favorite Pokémon is Slowpoke and I like matcha and red bean ice cream.",
   education: {
     school: "Rochester Institute of Technology",
     location: "Rochester, NY",
@@ -51,49 +55,49 @@ export const projects: Project[] = [
     description:
       "BattleByte — a fun, timed LeetCode-based competitive coding platform where friends and peers battle head-to-head, competing for the best code efficiency and fastest solve times. Features real-time matchmaking, live leaderboards, and interactive code duels.",
     techStack: ["Next.js", "React", "TypeScript", "Node.js", "WebSocket", "TailwindCSS", "Prisma", "PostgreSQL"],
-    emoji: "⚔️",
+    icon: "sword",
   },
   {
     title: "CHATOT",
     description:
       "Chat Hub with Avatars and Themed Online Transmission — a real-time chat application with pixel art avatars and retro-themed UI, built with WebSockets for instant messaging.",
     techStack: ["React", "Node.js", "Socket.io", "MongoDB"],
-    emoji: "💬",
+    icon: "chat",
   },
   {
     title: "RAICHU",
     description:
       "Restaurant and Inventory Coordination Hub Utility — a full-stack app for inventory management and recipe tracking, with real-time ingredient tracking and an LLM-powered recipe recommendation engine.",
     techStack: ["JavaScript", "React", "TailwindCSS", "Next.js", "Firebase", "Docker"],
-    emoji: "🍳",
+    icon: "lightning",
   },
   {
     title: "GENGAR",
     description:
       "Generalized Efficient Neural Guide for AI Recognition — a facial recognition system using TensorFlow CNNs, achieving 85% accuracy with precision/recall/F1 metrics for identity verification.",
     techStack: ["Python", "TensorFlow", "CNN", "OpenCV"],
-    emoji: "👻",
+    icon: "brain",
   },
   {
     title: "JOTTQL",
     description:
       "Jotting Organized Tabular Transactions with Query Language — a custom-built relational database engine with an interactive SQL prompt, supporting CREATE, INSERT, SELECT, ALTER, and DROP with page-based storage and buffer management.",
     techStack: ["Java"],
-    emoji: "⚡",
+    icon: "database",
   },
   {
     title: "MEW",
     description:
       "Marketplace for Efficient Webcommerce — a full-stack e-commerce platform with Stripe-powered PCI-compliant payments (2.0s → 1.3s processing), optimized PostgreSQL schema via Spring Data JPA (40% query boost), and p95 latency reduced from 450ms → 300ms.",
     techStack: ["Java", "JavaScript", "React", "Spring Boot", "PostgreSQL", "SonarQube"],
-    emoji: "🛒",
+    icon: "cart",
   },
   {
     title: "ROTOM",
     description:
       "Relay for Optimized Transmission of Messages — a high-performance MQTT 3.1.1-compliant broker built from scratch in C, featuring trie-based topic routing and Knuth's multiplicative CRC32 hashing, achieving 30% throughput improvement and 25% faster message lookup.",
     techStack: ["C"],
-    emoji: "🔌",
+    icon: "signal",
   },
 ];
 
@@ -195,7 +199,7 @@ export const consoleCommands: Record<
   },
   "ls projects": {
     description: "List projects",
-    output: projects.map((p) => `  ${p.emoji} ${p.title}`).join("\n"),
+    output: projects.map((p) => `  ${p.emoji || "⚔️"} ${p.title}`).join("\n"),
   },
   "cat resume": {
     description: "View resume",
@@ -245,7 +249,6 @@ export const consoleCommands: Record<
   ║  Shell:  portfolio-sh           ║
   ║  Theme:  Starry Night 🌙         ║
   ║  School: RIT '27                ║
-  ║  Tea:    ██████████ 100%        ║
   ╚══════════════════════════════════╝`,
   },
   date: {

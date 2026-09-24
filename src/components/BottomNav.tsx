@@ -1,6 +1,14 @@
 "use client";
 
 import React from "react";
+import {
+  PixelHomeIcon,
+  PixelAboutIcon,
+  PixelProjectsIcon,
+  PixelSkillsIcon,
+  PixelResumeIcon,
+  PixelContactIcon,
+} from "./PixelIcons";
 
 export type Section = "home" | "about" | "projects" | "skills" | "resume" | "contact";
 
@@ -9,13 +17,13 @@ interface BottomNavProps {
   onNavigate: (section: Section) => void;
 }
 
-const navItems: { section: Section; icon: string; label: string }[] = [
-  { section: "about", icon: "👤", label: "about" },
-  { section: "projects", icon: "⟨/⟩", label: "projects" },
-  { section: "skills", icon: "🛠", label: "skills" },
-  { section: "resume", icon: "📄", label: "resume" },
-  { section: "contact", icon: "✉", label: "contact" },
-  { section: "home", icon: "⭐", label: "home" },
+const navItems: { section: Section; icon: React.ReactNode; label: string }[] = [
+  { section: "about", icon: <PixelAboutIcon />, label: "about" },
+  { section: "projects", icon: <PixelProjectsIcon />, label: "projects" },
+  { section: "skills", icon: <PixelSkillsIcon />, label: "skills" },
+  { section: "resume", icon: <PixelResumeIcon />, label: "resume" },
+  { section: "contact", icon: <PixelContactIcon />, label: "contact" },
+  { section: "home", icon: <PixelHomeIcon />, label: "home" },
 ];
 
 export default function BottomNav({ activeSection, onNavigate }: BottomNavProps) {

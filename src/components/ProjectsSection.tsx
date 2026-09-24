@@ -2,6 +2,7 @@
 
 import React from "react";
 import { projects } from "@/data/portfolio";
+import { PixelIcon } from "./PixelIcons";
 
 export default function ProjectsSection() {
   return (
@@ -11,7 +12,9 @@ export default function ProjectsSection() {
         {projects.map((project, i) => (
           <div key={i} className="project-card">
             <div className="project-header">
-              <span className="project-emoji">{project.emoji}</span>
+              <span className="project-icon">
+                <PixelIcon name={project.icon} size="2.2rem" />
+              </span>
               <h3 className="project-title">{project.title}</h3>
             </div>
             <p className="project-desc">{project.description}</p>
