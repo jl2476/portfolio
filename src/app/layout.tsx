@@ -1,5 +1,21 @@
 import type { Metadata } from "next";
+import { Press_Start_2P, VT323 } from "next/font/google";
 import "./globals.css";
+
+// implements Next.js font preloading and optimization
+const pressStart2P = Press_Start_2P({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-press-start",
+  display: "swap",
+});
+
+const vt323 = VT323({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-vt323",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Pixel Portfolio | John Li",
@@ -7,6 +23,11 @@ export const metadata: Metadata = {
     "A cozy pixel art portfolio — showcasing projects, skills, and vibes under a starry night sky.",
   keywords: ["portfolio", "developer", "pixel art", "web developer", "projects"],
   authors: [{ name: "John Li" }],
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   openGraph: {
     title: "Pixel Portfolio | John Li",
     description: "A cozy pixel art portfolio",
@@ -20,8 +41,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className={`${pressStart2P.variable} ${vt323.variable}`}>
+      <head>
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" sizes="any" />
+        <link rel="shortcut icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/icon.svg" />
+      </head>
+      <body className={vt323.className}>{children}</body>
     </html>
   );
 }
