@@ -5,15 +5,14 @@ import { consoleCommands, projects } from "@/data/portfolio";
 import { PixelIcon } from "./PixelIcons";
 
 interface ConsoleLine {
-  text?: string;
-  content?: React.ReactNode;
+  content: React.ReactNode;
   type: "command" | "output" | "error" | "system";
 }
 
 export default function Console() {
   const [lines, setLines] = useState<ConsoleLine[]>([
     {
-      text: '  welcome to portfolio-sh! type "help" for commands.',
+      content: '  welcome to portfolio-sh! type "help" for commands.',
       type: "system",
     },
   ]);
@@ -39,7 +38,7 @@ export default function Console() {
 
       const newLines: ConsoleLine[] = [
         ...lines,
-        { text: `visitor@portfolio:~$ ${cmd}`, type: "command" },
+        { content: `visitor@portfolio:~$ ${cmd}`, type: "command" },
       ];
 
       if (trimmed === "") {
@@ -55,7 +54,7 @@ export default function Console() {
       // Handle echo
       if (trimmed.startsWith("echo ")) {
         const msg = cmd.trim().slice(5);
-        newLines.push({ text: `  ${msg}`, type: "output" });
+        newLines.push({ content: `  ${msg}`, type: "output" });
         setLines(newLines);
         return;
       }
@@ -81,10 +80,10 @@ export default function Console() {
 
       const command = consoleCommands[trimmed];
       if (command) {
-        newLines.push({ text: command.output, type: "output" });
+        newLines.push({ content: command.output, type: "output" });
       } else {
         newLines.push({
-          text: `  command not found: ${trimmed}. type "help" for available commands.`,
+          content: `  command not found: ${trimmed}. type "help" for available commands.`,
           type: "error",
         });
       }
