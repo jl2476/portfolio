@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   keywords: ["portfolio", "developer", "pixel art", "web developer", "projects"],
   authors: [{ name: "John Li" }],
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    icon: "/slowpoke.png",
+    shortcut: "/slowpoke.png",
+    apple: "/slowpoke.png",
   },
   openGraph: {
     title: "Pixel Portfolio | John Li",
@@ -43,9 +43,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${pressStart2P.variable} ${vt323.variable}`}>
       <head>
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" sizes="any" />
-        <link rel="shortcut icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/icon.svg" />
+        <link rel="icon" href="/slowpoke.png" type="image/png" sizes="any" />
+        <link rel="shortcut icon" href="/slowpoke.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/slowpoke.png" />
       </head>
       <body className={vt323.className}>{children}</body>
     </html>
