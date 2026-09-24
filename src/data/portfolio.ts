@@ -199,7 +199,7 @@ export const consoleCommands: Record<
   },
   "ls projects": {
     description: "List projects",
-    output: projects.map((p) => `  ${p.emoji || "⚔️"} ${p.title}`).join("\n"),
+    output: projects.map((p) => `  ${p.icon} ${p.title}`).join("\n"),
   },
   "cat resume": {
     description: "View resume",
