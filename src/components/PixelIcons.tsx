@@ -414,6 +414,7 @@ export function PixelStarIcon({ size = "1em", className = "", ...props }: PixelI
 
 export interface ReusablePixelIconProps extends PixelIconProps {
   name?: PixelIconName | string;
+
 }
 
 /**

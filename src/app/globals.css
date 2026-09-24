@@ -86,7 +86,8 @@ body {
   color: var(--text-primary);
   background: var(--bg-deep);
   min-height: 100vh;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
 }
 
@@ -124,6 +125,7 @@ body {
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  pointer-events: none;
   background: linear-gradient(180deg,
       #0a0618 0%,
       #0d0824 15%,
@@ -421,10 +423,13 @@ body {
 
 /* Window content */
 .window-content {
-  flex: 1;
+  flex: 1 1 auto;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
   padding: 24px 28px;
   min-height: 350px;
+  max-height: 65vh;
   position: relative;
 }
 
@@ -500,13 +505,19 @@ body {
   line-height: 1;
 }
 
-.nav-icon svg,
+/* for all pixel icons except navigation */
 .pixel-icon {
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.2s ease;
+}
+
+/* Navigation icons need to fill their respective divs */
+.nav-icon .pixel-icon {
   width: 100%;
   height: 100%;
-  display: block;
-  fill: currentColor;
-  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.2s ease;
 }
 
 .nav-item:hover .nav-icon svg {
@@ -945,6 +956,28 @@ body {
   color: var(--text-console);
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+.console-projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 8px;
+  margin: 4px 0;
+}
+
+.console-project-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-console);
+}
+
+.console-project-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--purple-light);
+  flex-shrink: 0;
 }
 
 .console-output-line.command {

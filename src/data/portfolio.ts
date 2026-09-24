@@ -1,4 +1,4 @@
-import { PixelIconName } from "@/components/PixelIcons";
+import { PixelIconName, PixelIconProps, ReusablePixelIconProps } from "@/components/PixelIcons";
 
 export interface Project {
   title: string;
@@ -6,13 +6,13 @@ export interface Project {
   techStack: string[];
   githubUrl?: string;
   liveUrl?: string;
-  icon?: PixelIconName;
+  iconName?: PixelIconName;
 }
 
 export interface Skill {
   name: string;
   category: string;
-  icon?: PixelIconName;
+  icon?: PixelIconProps;
 }
 
 export interface Experience {
@@ -21,7 +21,7 @@ export interface Experience {
   period: string;
   description: string;
   bullets: string[];
-  icon?: PixelIconName;
+  icon?: PixelIconProps;
 }
 
 export const personalInfo = {
@@ -55,49 +55,49 @@ export const projects: Project[] = [
     description:
       "BattleByte — a fun, timed LeetCode-based competitive coding platform where friends and peers battle head-to-head, competing for the best code efficiency and fastest solve times. Features real-time matchmaking, live leaderboards, and interactive code duels.",
     techStack: ["Next.js", "React", "TypeScript", "Node.js", "WebSocket", "TailwindCSS", "Prisma", "PostgreSQL"],
-    icon: "sword",
+    iconName: "sword",
   },
   {
     title: "CHATOT",
     description:
       "Chat Hub with Avatars and Themed Online Transmission — a real-time chat application with pixel art avatars and retro-themed UI, built with WebSockets for instant messaging.",
     techStack: ["React", "Node.js", "Socket.io", "MongoDB"],
-    icon: "chat",
+    iconName: "chat",
   },
   {
     title: "RAICHU",
     description:
       "Restaurant and Inventory Coordination Hub Utility — a full-stack app for inventory management and recipe tracking, with real-time ingredient tracking and an LLM-powered recipe recommendation engine.",
     techStack: ["JavaScript", "React", "TailwindCSS", "Next.js", "Firebase", "Docker"],
-    icon: "lightning",
+    iconName: "lightning",
   },
   {
     title: "GENGAR",
     description:
       "Generalized Efficient Neural Guide for AI Recognition — a facial recognition system using TensorFlow CNNs, achieving 85% accuracy with precision/recall/F1 metrics for identity verification.",
     techStack: ["Python", "TensorFlow", "CNN", "OpenCV"],
-    icon: "brain",
+    iconName: "brain",
   },
   {
     title: "JOTTQL",
     description:
       "Jotting Organized Tabular Transactions with Query Language — a custom-built relational database engine with an interactive SQL prompt, supporting CREATE, INSERT, SELECT, ALTER, and DROP with page-based storage and buffer management.",
     techStack: ["Java"],
-    icon: "database",
+    iconName: "database",
   },
   {
     title: "MEW",
     description:
       "Marketplace for Efficient Webcommerce — a full-stack e-commerce platform with Stripe-powered PCI-compliant payments (2.0s → 1.3s processing), optimized PostgreSQL schema via Spring Data JPA (40% query boost), and p95 latency reduced from 450ms → 300ms.",
     techStack: ["Java", "JavaScript", "React", "Spring Boot", "PostgreSQL", "SonarQube"],
-    icon: "cart",
+    iconName: "cart",
   },
   {
     title: "ROTOM",
     description:
       "Relay for Optimized Transmission of Messages — a high-performance MQTT 3.1.1-compliant broker built from scratch in C, featuring trie-based topic routing and Knuth's multiplicative CRC32 hashing, achieving 30% throughput improvement and 25% faster message lookup.",
     techStack: ["C"],
-    icon: "signal",
+    iconName: "signal",
   },
 ];
 
@@ -199,12 +199,12 @@ export const consoleCommands: Record<
   },
   "ls projects": {
     description: "List projects",
-    output: projects.map((p) => `  ${p.icon} ${p.title}`).join("\n"),
+    output: projects.map((p) => `  ${p.title}`).join("\n"),
   },
   "cat resume": {
     description: "View resume",
     output: experience
-      .map((e) => `  ⭐ ${e.title} @ ${e.company} (${e.period})`)
+      .map((e) => `  ${e.title} @ ${e.company} (${e.period})`)
       .join("\n"),
   },
   skills: {
@@ -221,24 +221,24 @@ export const consoleCommands: Record<
   },
   contact: {
     description: "Show contact info",
-    output: `  📧 ${personalInfo.email}
-  📱 ${personalInfo.phone}
-  🐙 ${personalInfo.github}
-  💼 ${personalInfo.linkedin}`,
+    output: `  ${personalInfo.email}
+  ${personalInfo.phone}
+  ${personalInfo.github}
+  ${personalInfo.linkedin}`,
   },
   education: {
     description: "View education info",
-    output: `  🎓 ${personalInfo.education.school}
-  📚 ${personalInfo.education.degree}
-  📖 ${personalInfo.education.minors}
-  📊 GPA: ${personalInfo.education.gpa}
-  🗓️ ${personalInfo.education.graduation}`,
+    output: `  ${personalInfo.education.school}
+  ${personalInfo.education.degree}
+  ${personalInfo.education.minors}
+  GPA: ${personalInfo.education.gpa}
+  ${personalInfo.education.graduation}`,
   },
   "sudo hire-me": {
     description: "???",
-    output: `  ✨ Achievement unlocked: You found the secret command!
-  📧 Send me a message at ${personalInfo.email}
-  Let's build something together! `,
+    output: `  Achievement unlocked: You found the secret command!
+  Send me a message at ${personalInfo.email}
+  Let's build something together!`,
   },
   neofetch: {
     description: "System info",

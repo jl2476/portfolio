@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useState, useRef, useEffect, useCallback } from "react";
-import { consoleCommands } from "@/data/portfolio";
+import { consoleCommands, projects } from "@/data/portfolio";
+import { PixelIcon } from "./PixelIcons";
 
 interface ConsoleLine {
-  text: string;
+  text?: string;
+  content?: React.ReactNode;
   type: "command" | "output" | "error" | "system";
 }
 
@@ -54,6 +56,25 @@ export default function Console() {
       if (trimmed.startsWith("echo ")) {
         const msg = cmd.trim().slice(5);
         newLines.push({ text: `  ${msg}`, type: "output" });
+        setLines(newLines);
+        return;
+      }
+
+      // Handle ls projects with rich SVG PixelIcons
+      if (trimmed === "ls projects") {
+        newLines.push({
+          content: (
+            <div className="console-projects-list">
+              {projects.map((p) => (
+                <div key={p.title} className="console-project-item">
+                  <PixelIcon name={p.iconName} size="14" className="console-project-icon" />
+                  <span>{p.title}</span>
+                </div>
+              ))}
+            </div>
+          ),
+          type: "output",
+        });
         setLines(newLines);
         return;
       }
@@ -128,7 +149,7 @@ export default function Console() {
             key={i}
             className={`console-output-line ${line.type}`}
           >
-            {line.text}
+            {line.content}
           </div>
         ))}
         <div className="console-input-line">

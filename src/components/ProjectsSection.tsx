@@ -13,7 +13,7 @@ export default function ProjectsSection() {
           <div key={i} className="project-card">
             <div className="project-header">
               <span className="project-icon">
-                <PixelIcon name={project.icon} size="2.2rem" />
+                <PixelIcon name={project.iconName} size="2rem" />
               </span>
               <h3 className="project-title">{project.title}</h3>
             </div>
